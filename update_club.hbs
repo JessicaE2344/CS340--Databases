@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Club</title>
+</head>
+<body>
+    <nav>
+        <a href="/clubs_eas">Back to Clubs</a>
+    </nav>
+    <h1>Update Club Information</h1>
+    <form action="/update_club" method="POST">
+        <input type="hidden" name="clubs_eas_id" value="{{club.clubs_eas_id}}">
+        
+        <label for="club-name">Club Name:</label>
+        <input type="text" id="club-name" name="club_name" value="{{club.club_name}}" required>
+        
+        <label for="instructor-id">Instructor:</label>
+        <select id="instructor-id" name="instructor_id">
+            <option value="">No Instructor</option>
+            {{#each instructors}}
+            <option value="{{this.instructor_id}}" {{#if (eq this.instructor_id ../club.instructor_id)}}selected{{/if}}>
+                {{this.last_name}}
+            </option>
+            {{/each}}
+        </select>
+
+        <label for="meet-time">Meet Time:</label>
+        <input type="time" id="meet-time" name="meet_time" value="{{club.meet_time}}" required>
+        
+        <label for="week-day">Week Day:</label>
+        <input type="text" id="week-day" name="week_day" value="{{club.week_day}}" required>
+        
+        <label for="enrolled">Enrolled:</label>
+        <input type="number" id="enrolled" name="enrolled" value="{{club.enrolled}}" required min="0">
+        
+        <button type="submit">Update Club</button>
+    </form>
+</body>
+</html>
+

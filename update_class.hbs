@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Update Class</title>
+</head>
+<body>
+    <h2>Update Class</h2>
+    <a href="/">Home</a>
+    
+    <form action="/update_class" method="POST">
+        <input type="hidden" name="class_id" value="{{class.class_id}}">
+
+        <label for="class_name">Class Name</label>
+        <input type="text" id="class_name" name="class_name" value="{{class.class_name}}" required>
+
+        <label for="instructor">Instructor</label>
+        <select id="instructor" name="instructor_id">
+            <option value="">No Instructor</option>
+            {{#each instructors}}
+            <option value="{{this.instructor_id}}" {{#if (eq this.instructor_id ../class.instructor_id)}}selected{{/if}}>
+                {{this.last_name}}
+            </option>
+            {{/each}}
+        </select>
+
+         <label for="capacity">Capacity</label>
+        <input type="number" id="capacity" name="capacity" value="{{class.capacity}}" required min="0">
+
+        <label for="enrolled">Enrolled</label>
+        <input type="number" id="enrolled" name="enrolled" value="{{class.enrolled}}" required min="0">
+
+        <label for="class_time">Class Time</label>
+        <input type="time" id="class_time" name="class_time" value="{{class.class_time}}" required>
+
+        <label for="week_day">Week Day</label>
+        <input type="text" id="week_day" name="week_day" value="{{class.week_day}}" required>
+
+        <button type="submit">Update Class</button>
+    </form>
+</body>
+</html>

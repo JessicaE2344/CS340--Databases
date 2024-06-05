@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Student to Club</title>
+</head>
+<body>
+    <h1>Add Student to Club</h1>
+    <form id="add-student-to-club-form">
+        <label for="input-student-id">Student:</label>
+        <select id="input-student-id" name="student_id">
+            {{#each students}}
+            <option value="{{this.student_id}}">{{this.first_name}} {{this.last_name}}</option>
+            {{/each}}
+        </select>
+
+        <label for="input-club-id">Club:</label>
+        <select id="input-club-id" name="clubs_eas_id">
+            {{#each clubs}}
+            <option value="{{this.clubs_eas_id}}">{{this.club_name}}</option>
+            {{/each}}
+        </select>
+
+        <button type="submit">Add Student to Club</button>
+    </form>
+
+    <a href="/students_in_clubs">Back to Students in Clubs</a>
+
+    <script src="/js/add_student_to_club.js"></script>
+</body>
+</html>

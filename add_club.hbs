@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Club</title>
+</head>
+<body>
+    <h2>Add New Club</h2>
+    <p>To add a new Club, please enter information below and click 'Submit'!</p>
+    <a href="/clubs_eas">Back to Clubs</a>
+    <form id="add-club-form-ajax">
+        <label for="input-club-name">Club Name:</label>
+        <input type="text" id="input-club-name" name="input-club-name" required>
+
+        <label for="input-instructor">Instructor:</label>
+        <select id="input-instructor" name="instructor_id">
+            <option value="">No Instructor</option>
+            {{#each instructors}}
+            <option value="{{this.instructor_id}}">
+                {{this.last_name}}
+            </option>
+            {{/each}}
+        </select>
+
+        <label for="input-meet-time">Meet Time:</label>
+        <input type="time" id="input-meet-time" name="input-meet-time" required>
+
+        <label for="input-week-day">Week Day:</label>
+        <input type="text" id="input-week-day" name="input-week-day" required>
+
+        <label for="input-enrolled">Enrolled:</label>
+        <input type="number" id="input-enrolled" name="input-enrolled" required min="0">
+
+        <input type="submit" value="Submit">
+    </form>
+    <script src="/js/add_club.js"></script>
+</body>
+</html>

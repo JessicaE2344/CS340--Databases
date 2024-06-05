@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<script src="/js/delete_classes.js"></script>-->
+    <link rel="stylesheet" href="css/style.css">
+    <script src="/js/delete_class.js"></script>
+    <title>Classes</title>
+</head>
+<body>
+    <h2>Classes</h2>
+   <nav>
+        <a href="/">Home</a>
+        <a href="/students">Students</a>
+        <a href="/instructors">Instructors</a>
+        <a href="/classes">Classes</a>
+        <a href="/clubs_eas">Clubs</a>
+        <a href="/students_in_classes">Students in Classes</a>
+        <a href="/students_in_clubs">Students in Clubs</a>
+    </nav>
+    <table id="classes-table">
+        <thead>
+            <tr>
+                <th>class_id</th>
+                <th>class_name</th> <!-- Swapped this -->
+                <th>instructor</th> <!-- Swapped this -->
+                <th>capacity</th>
+                <th>enrolled</th>
+                <th>class_time</th>
+                <th>week_day</th>
+            </tr>
+        </thead>
+
+        {{!-- Body section --}}
+        <tbody>
+            {{#each data}}
+            <tr>
+                <td>{{this.class_id}}</td>
+                <td>{{this.class_name}}</td>
+                <td>{{this.instructor}}</td>
+                <td>{{this.capacity}}</td>
+                <td>{{this.enrolled}}</td>
+                <td>{{this.class_time}}</td>
+                <td>{{this.week_day}}</td>
+                <td class="actions"><a href="/update_class?class_id={{this.class_id}}" class="update">Edit</a>
+                    <a href="#" class="delete" data-class-id="{{this.class_id}}" onclick="deleteClass(event, '{{this.class_id}}')">Delete</a>
+                    <form action="/delete_class" method="POST" id="deleteForm">
+                        <input type="hidden" name="class_id" id="deleteClassId">
+                    </form>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <a href="/add_class">Add New Class</a>
+</body>
+</html>

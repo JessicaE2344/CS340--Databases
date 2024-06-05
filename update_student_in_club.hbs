@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Student in Club</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav>
+        <a href="/students_in_clubs">Back to Students in Clubs</a>
+    </nav>
+    <h1>Update Student in Club</h1>
+    <form action="/update_student_in_club" method="POST">
+        <input type="hidden" name="students_in_clubs_id" value="{{studentInClub.students_in_clubs_id}}">
+        
+        <label for="student-id">Student:</label>
+        <select id="student-id" name="student_id" required>
+            {{#each students}}
+            <option value="{{this.student_id}}" {{#if (eq this.student_id ../studentInClub.student_id)}}selected{{/if}}>
+                {{this.first_name}} {{this.last_name}}
+            </option>
+            {{/each}}
+        </select>
+        
+        <label for="club-id">Club:</label>
+        <select id="club-id" name="club_id" required>
+            {{#each clubs}}
+            <option value="{{this.clubs_eas_id}}" {{#if (eq this.clubs_eas_id ../studentInClub.clubs_eas_id)}}selected{{/if}}>
+                {{this.club_name}}
+            </option>
+            {{/each}}
+        </select>
+        
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>

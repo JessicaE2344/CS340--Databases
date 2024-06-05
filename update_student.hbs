@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Student</title>
+</head>
+<body>
+    <h1>Update Student Information</h1>
+    <form action="/update_student" method="POST">
+        <input type="hidden" name="id" value="{{student.student_id}}">
+        
+        <label for="first-name">First Name:</label>
+        <input type="text" id="first-name" name="first_name" value="{{student.first_name}}" required>
+        
+        <label for="last-name">Last Name:</label>
+        <input type="text" id="last-name" name="last_name" value="{{student.last_name}}" required>
+        
+        <label for="grade-level">Grade Level:</label>
+        <input type="number" id="grade-level" min="9" max="12" name="grade_level" value="{{student.grade_level}}" required>
+        
+        <label for="gpa">GPA:</label>
+        <input type="number" id="gpa" name="gpa" min="0" step="0.1" value="{{student.gpa}}" required>
+        
+        <button type="submit">Update Student</button>
+    </form>
+</body>
+</html>

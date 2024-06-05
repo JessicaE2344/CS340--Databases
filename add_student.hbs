@@ -1,0 +1,31 @@
+<!-- add_student.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Student</title>
+</head>
+<body>
+    <h2>Add New Student </h2>
+    <p>To add a new student, please enter their information below and click 'Submit'!</p>
+    <a href="/students">Back</a>
+    <form id="add-student-form-ajax">
+        <label for="input-fname">First Name: </label>
+        <input type="text" name="first_name" id="input-fname" required>
+
+        <label for="input-lname">Last Name: </label>
+        <input type="text" name="last_name" id="input-lname" required>
+
+        <label for="input-grade-level">Grade Level: </label>
+        <input type="number" name="grade_level" id="input-grade-level" required>
+
+        <label for="input-gpa">GPA: </label>
+        <input type="number" step="0.01" name="gpa" id="input-gpa" required>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
+
+<script src="/js/add_student.js"></script>

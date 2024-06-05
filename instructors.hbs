@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instructors</title>
+    <script src="/js/delete_instructor.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h2>Instructors</h2>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/students">Students</a>
+        <a href="/instructors">Instructors</a>
+        <a href="/classes">Classes</a>
+        <a href="/clubs_eas">Clubs</a>
+        <a href="/students_in_classes">Students in Classes</a>
+        <a href="/students_in_clubs">Students in Clubs</a>
+    </nav>
+    <table>
+        <thead>
+            <tr>
+                <th>Instructor ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each data}}
+            <tr>
+                <td>{{this.instructor_id}}</td>
+                <td>{{this.first_name}}</td>
+                <td>{{this.last_name}}</td>
+                <td>
+                    <a href="/update_instructor?instructor_id={{this.instructor_id}}">Edit</a>
+                    <a href="#" class="delete" data-instructor-id="{{this.instructor_id}}" onclick="deleteInstructor(event, '{{this.instructor_id}}')">
+                        Delete
+                    </a>
+                    <form action="/delete_instructor" method="POST" id="deleteForm">
+                        <input type="hidden" name="instructor_id" id="deleteInstructorId">
+                    </form>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <a href="/add_instructor">Add New Instructor</a>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="/js/delete_club.js"></script>
+    <title>Clubs</title>
+</head>
+<body>
+    <h2>Clubs</h2>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/students">Students</a>
+        <a href="/instructors">Instructors</a>
+        <a href="/classes">Classes</a>
+        <a href="/clubs_eas">Clubs</a>
+        <a href="/students_in_classes">Students in Classes</a>
+        <a href="/students_in_clubs">Students in Clubs</a>
+    </nav>
+    <table id="clubs-table">
+        <thead>
+            <tr>
+                <th>Club ID</th>
+                <th>Club Name</th>
+                <th>Instructor</th>
+                <th>Meet Time</th>
+                <th>Week Day</th>
+                <th>Enrolled</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each data}}
+            <tr>
+                <td>{{this.clubs_eas_id}}</td>
+                <td>{{this.club_name}}</td>
+                <td>{{this.instructor}}</td>
+                <td>{{this.meet_time}}</td>
+                <td>{{this.week_day}}</td>
+                <td>{{this.enrolled}}</td>
+                <td class="actions">
+                    <a href="/update_club?clubs_eas_id={{this.clubs_eas_id}}" class="update">Edit</a>
+                    <a href="#" class="delete" data-club-id="{{this.clubs_eas_id}}" onclick="deleteClub(event, '{{this.clubs_eas_id}}')">Delete</a>
+                    <form action="/delete_club" method="POST" id="deleteForm">
+                        <input type="hidden" name="clubs_eas_id" id="deleteClubId">
+                    </form>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <a href="/add_club">Add New Club</a>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,44 @@
+<!-- add_class.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Class</title>
+</head>
+<body>
+    <h2>Add A New Class</h2>
+    <p>To add a new Class, please enter their information below and click 'Submit'!</p>
+    <a href="/students">Back</a>
+    <form id="add-class-form-ajax">
+        <label for="input-class-name">Class Name:</label>
+        <input type="text" id="input-class-name" name="input-class-name" required>
+
+        <label for="input-instructor">Instructor:</label>
+        <select id="input-instructor" name="instructor_id">
+            <option value="">No Instructor</option>
+            {{#each instructors}}
+            <option value="{{this.instructor_id}}" {{#if (eq this.instructor_id ../class.instructor_id)}}selected{{/if}}>
+                {{this.last_name}}
+            </option>
+            {{/each}}
+        </select>
+
+        <label for="input-capacity">Capacity:</label>
+        <input type="number" id="input-capacity" name="input-capacity" required min="0">
+
+        <label for="input-enrolled">Enrolled:</label>
+        <input type="number" id="input-enrolled" name="input-enrolled" required min="0">
+
+        <label for="input-class-time">Class Time:</label>
+        <input type="time" id="input-class-time" name="input-class-time" required>
+
+        <label for="input-week-day">Week Day:</label>
+        <input type="text" id="input-week-day" name="input-week-day" required>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
+
+<script src="/js/add_class.js"></script>
